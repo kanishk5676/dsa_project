@@ -1,33 +1,136 @@
+# Data Structures and Algorithms Syllabus Tree Project
+
+This project implements a hierarchical syllabus structure for a Data Structures and Algorithms (DSA) course. The syllabus tree is built using Python’s object-oriented programming principles, with each topic and subtopic represented as nodes in a tree. Additional functionalities include linked resources and questions relevant to each topic, making this a comprehensive and interactive syllabus representation.
+
+## Project Overview
+
+The project revolves around organizing DSA topics into a tree-like structure, where each node represents a topic/module and is capable of storing:
+- **Duration in hours** (if available),
+- **Resource links** related to the topic,
+- **Questions** to practice and test understanding.
+
+### Features:
+1. **Hierarchical Structure**: Organized by modules and subtopics, allowing detailed exploration.
+2. **Resource Mapping**: Each topic can have additional educational resources.
+3. **Interactive Question Bank**: A set of questions associated with each topic for quick review.
+
+## Data Structures Used and Their Purpose
+
+### 1. **Tree Data Structure** (Implemented as `TreeNode` Class)
+   - **Purpose**: Represents the hierarchical structure of the syllabus. Each node (topic or subtopic) can have child nodes (subtopics) and associated resources/questions.
+   - **Representation**: A `TreeNode` instance for each topic/subtopic, with children pointing to other `TreeNode` instances.
+
+#### Class Structure of `TreeNode`
+```python
+class TreeNode:
+    def __init__(self, name, hours=None):
+        self.name = name           # Name of the module or topic
+        self.hours = hours          # Duration in hours (optional)
+        self.resources = {}         # Dictionary for additional resources
+        self.children = []          # List of child TreeNode instances
+        self.questions_map = {}     # Dictionary for storing questions
+```
+### Key Attributes of `TreeNode`
+
+* `name`: Stores the topic name.
+* `hours`: (Optional) Estimated time for each topic, useful for planning study sessions.
+* `resources`: Dictionary structure (`HashMap`) where each entry has a key (resource name) and a URL as the value.
+* `children`: List data structure to store subtopics as child nodes.
+* `questions_map`: Dictionary (topic-specific questions are added under relevant keys).
+
+### Why Use a Tree Structure?
+
+A syllabus naturally follows a hierarchical pattern, and using a tree makes it easy to:
+
+* **Traverse**: Navigate through main topics and their subtopics.
+* **Expandability**: Add new modules or topics without disrupting existing structure.
+* **Flexibility**: Each topic can have its own resources and questions.
+
+## Key Methods in `TreeNode`
+
+### `add_child(self, child_node)`
+
+Adds a child node to represent a subtopic.
+
+### `add_resource(self, key, url)`
+
+Maps a resource name to a URL, making the resource accessible under the topic node.
+
+### `add_questions(self, topic, questions)`
+
+Links specific questions to the current topic.
+
+### `display_tree(self, level=0)`
+
+Recursively prints out the syllabus structure, displaying topics, resources, and associated questions.
 # Data Structures and Algorithms Syllabus Tree
 
-This repository contains a Python implementation of a Data Structures and Algorithms syllabus tree structure using an object-oriented approach. Each topic and subtopic is represented as a node in the tree, with information on duration, additional resources, and related questions.
+This project represents a hierarchical syllabus for a Data Structures and Algorithms course, organized into modules with topics, resources, and key questions.
 
-## Project Structure
+## Syllabus Tree Structure
 
-### `TreeNode` Class
+```mathematica
+Data Structures and Algorithms Syllabus
+  ├── Module 1: Algorithm Analysis (8 hours)
+  │   ├── Importance of algorithms and data structures
+  │   ├── Fundamentals of algorithm analysis
+  │   ├── ...
+  ├── Module 2: Linear Data Structures (7 hours)
+  │   ├── Arrays: 1D and 2D array
+  │   │   ├── Resources: Arrays in Data Structures - URL
+  │   │   └── Questions:
+  │   │       - What is the difference between a 1D and 2D array?
+  │   ├── Stack and its Applications
+  │   └── ...
+```
+# Data Structures and Algorithms Syllabus Tree
 
-The `TreeNode` class represents each node in the syllabus tree with the following attributes:
-- `name`: Name of the topic, module, or subtopic.
-- `hours`: Duration in hours (optional for each node).
-- `resources`: A dictionary storing resources related to each topic (e.g., video links or articles).
-- `children`: A list of child nodes (subtopics under a given topic).
-- `questions_map`: A dictionary storing questions related to each topic.
+This project represents a hierarchical syllabus for a Data Structures and Algorithms course, organized into modules with topics, resources, and key questions.
 
-### Key Methods
-- `add_child(child_node)`: Adds a subtopic as a child node under the current topic.
-- `add_resource(key, url)`: Adds a resource (key-value pair) for the topic, where the key is a short description, and the URL points to an online resource.
-- `add_questions(topic, questions)`: Stores questions related to a specific topic.
-- `display_tree(level=0)`: Recursively displays the tree structure with topics, resources, and questions.
+## Project Overview
 
-### Main Functions
-- `build_syllabus_tree()`: Constructs the syllabus tree for Data Structures and Algorithms, organizing it into modules and subtopics with relevant resources and questions.
-- `generate_n_questions(n)`: Generates a set of `n` random questions from a predefined dataset of questions on topics such as Algorithm Analysis, Linear Data Structures, Trees, Graphs, and more.
+The **Data Structures and Algorithms Syllabus Tree** is structured using a custom Python class `TreeNode`. Each node represents a topic, subtopic, or module in the syllabus, along with resources and questions related to the topic. This structure is recursively built using child nodes to represent a detailed syllabus layout.
 
-### Example Usage
+## Code Representation and Explanation
+
+### Building the Syllabus Tree
+
+The syllabus tree is created by initializing a root node (`syllabus`) and attaching child nodes for each module and topic. Each module contains subtopics and resources for learning, along with a list of questions to assess understanding.
 
 ```python
-# Build and display the syllabus tree
-syllabus_tree = build_syllabus_tree()
+def build_syllabus_tree():  
+    # Root node  
+    syllabus = TreeNode("Data Structures and Algorithms Syllabus")  
 
-# Generate and print 3 random questions from the dataset
-generate_n_questions(3)
+    # Adding modules as child nodes  
+    module1 = TreeNode("Module 1: Algorithm Analysis", 8)  
+    module1.add_child(TreeNode("Importance of algorithms and data structures"))  
+    # More subtopics added similarly...  
+
+    syllabus.add_child(module1)  # Add other modules similarly  
+    return syllabus
+```
+###Resource and Question Mapping Example
+Each topic can have resources and questions associated with it.
+
+```python
+asymptotic_analysis = TreeNode("Asymptotic Analysis for Recurrence Relations")
+asymptotic_analysis.add_resource("Recurrence Relations Explained", "https://youtu.be/4V30R3I1vLI?si=ofK-lcoxqETjhM3W")
+asymptotic_analysis.add_questions("Asymptotic Analysis for Recurrence Relations", [
+    "What is the difference between best, worst, and average case analysis?",
+    "Explain asymptotic notations like Big O, Omega, and Theta."
+])
+```
+##Additional Features
+###Random Question Generation
+The generate_n_questions(n) function randomly samples n questions from the dataset, which can be used to test or review topics.
+
+###Sample Code
+```python
+def generate_n_questions(n):
+    questions_dataset = { ... }  # Predefined questions per topic
+    all_questions = [q for topic in questions_dataset.values() for q in topic]
+    random_questions = random.sample(all_questions, n)
+    for i, question in enumerate(random_questions, 1):
+        print(f"{i}. {question}")
+```
