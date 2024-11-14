@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import networkx as nx
 import random
+import time
 
 class TreeNode:
     def __init__(self, name, hours=None):
@@ -33,17 +34,20 @@ class TreeNode:
             child.display_tree(level + 1)
 
 class Node:
-    def _init_(self, module_name, time_spent):
-        self.module_name = module_name
-        self.time_spent = time_spent
-        self.next = None
+    """Class for creating a Node in the linked list."""
+    def __init__(self, module_time):
+        self.module_time = module_time  # Time for this module (in seconds)
+        self.next = None  # Pointer to the next node
 
 class LinkedList:
-    def _init_(self):
+    """Linked list to store module times."""
+    def __init__(self):
         self.head = None
-    
-    def add(self, module_name, time_spent):
-        new_node = Node(module_name, time_spent)
+        self.number_of_nodes = 0  # Initialize the counter for the number of nodes
+
+    def append(self, module_time):
+        """Append a module time to the linked list."""
+        new_node = Node(module_time)
         if not self.head:
             self.head = new_node
         else:
@@ -51,23 +55,31 @@ class LinkedList:
             while current.next:
                 current = current.next
             current.next = new_node
-    
-    def get_times(self):
-        times = []
-        current = self.head
-        while current:
-            times.append(current.time_spent)
-            current = current.next
-        return times
+        self.number_of_nodes += 1  # Increment the number of nodes whenever a new one is added
 
-    def get_modules(self):
-        modules = []
+    def print_times(self):
+        """Print all stored module times along with module number."""
         current = self.head
+        total_time = 0
+        print("\nTime taken for each module:")
+        module_number = 1  # Start from module 1
         while current:
-            modules.append(current.module_name)
+            # Convert time to hours, minutes, seconds format
+            hours = int(current.module_time // 3600)
+            minutes = int((current.module_time % 3600) // 60)
+            seconds = int(current.module_time % 60)
+            print(f"Module {module_number}: {hours:02}:{minutes:02}:{seconds:02}")
+            total_time += current.module_time
             current = current.next
-        return modules
+            module_number += 1  # Increment the module number
 
+        # Convert total time to hours, minutes, seconds
+        total_hours = int(total_time // 3600)
+        total_minutes = int((total_time % 3600) // 60)
+        total_seconds = int(total_time % 60)
+
+        print(f"\nTotal time taken for the lesson: {total_hours:02}:{total_minutes:02}:{total_seconds:02}")
+        
 def build_DSA_syllabus_tree():
     # Root node: Syllabus
     syllabus = TreeNode("Data Structures and Algorithms Syllabus")
@@ -192,6 +204,29 @@ def build_DSA_syllabus_tree():
     module5.add_child(mst)
 
     syllabus.add_child(module5)
+    
+    # Module 6: Hashing
+    module6 = TreeNode("Module 6: Hashing", 4)
+    hashing_methods = TreeNode("Hash functions and Open Hashing")
+    hashing_methods.add_resource("Introduction to Hashing", "https://youtu.be/zeMa9sg-VJM?si=_nyBNPVn1v0Km3wS")
+    hashing_methods.add_questions("Hash functions and Open Hashing", [
+        "Find First Non-Repeating Character in a String",
+        "Explain the concept of open hashing."
+    ])
+    module6.add_child(hashing_methods)
+    
+    syllabus.add_child(module6)
+    
+    # Module 7: Heaps and AVL Trees
+    module7 = TreeNode("Module 7: Heaps and AVL Trees", 5)
+    heaps = TreeNode("Heaps and Heap sort")
+    heaps.add_resource("Heap Sort Algorithm", "https://www.youtube.com/watch?v=XYZ678")
+    heaps.add_questions("Heaps and Heap sort", [
+        "Kth Largest Element in an Array using Heap Sort",
+        "Merge K Sorted Lists"
+    ])
+    module7.add_child(heaps)
+    syllabus.add_child(module7)
 
     return syllabus
     
@@ -625,7 +660,6 @@ def build_math_logic_graph_tree():
 
     return math_logic_graph_syllabus
 
-
 def display_menu(syllabus_list):
     """Display menu to choose and display specific syllabus."""
     print("Available Subjects:")
@@ -640,13 +674,19 @@ def display_menu(syllabus_list):
     display_next_module(selected_syllabus)
 
 def display_next_module(syllabus):
-    """Display the next module in the syllabus."""
+    """Display the next module in the syllabus and track time."""
     modules = syllabus.children
+    linked_list = LinkedList()  # Create a linked list to store module times
+
     for module in modules:
         print(f"\n--- {module.name} ---")
         for child in module.children:
             child.display_tree()
-        
+
+        start_time = time.time()  # Start time for the module
+        start_time_str = time.strftime("%H:%M:%S", time.gmtime(start_time))  # Convert start time to HH:MM:SS
+        print(f"Module started at: {start_time_str}")
+
         user_input = input("Do you want to answer questions related to this module? (type 'questions' to answer, 'completed' to move to the next module): ")
         
         while user_input.lower() not in ["questions", "completed"]:
@@ -661,6 +701,18 @@ def display_next_module(syllabus):
                         print(f"  - {question}")
             input("\nPress Enter to continue to the next module...")
 
+        end_time = time.time()  # End time for the module
+        end_time_str = time.strftime("%H:%M:%S", time.gmtime(end_time))  # Convert end time to HH:MM:SS
+        print(f"Module ended at: {end_time_str}")
+
+        # Calculate time spent on this module and add to total time
+        module_time = end_time - start_time
+        linked_list.append(module_time)  # Store the module time in the linked list
+
+    # Print the times for all modules and the total time
+    linked_list.print_times()
+
+   
 # Example usage:
 syllabus1 = build_DSA_syllabus_tree()
 syllabus2 = build_complex_tree()
