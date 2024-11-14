@@ -110,7 +110,7 @@ def build_syllabus_tree():
     syllabus.add_child(module1)  # Add other modules similarly  
     return syllabus
 ```
-###Resource and Question Mapping Example
+### Resource and Question Mapping Example
 Each topic can have resources and questions associated with it.
 
 ```python
@@ -121,11 +121,11 @@ asymptotic_analysis.add_questions("Asymptotic Analysis for Recurrence Relations"
     "Explain asymptotic notations like Big O, Omega, and Theta."
 ])
 ```
-##Additional Features
-###Random Question Generation
+## Additional Features
+### Random Question Generation
 The generate_n_questions(n) function randomly samples n questions from the dataset, which can be used to test or review topics.
 
-###Sample Code
+### Sample Code
 ```python
 def generate_n_questions(n):
     questions_dataset = { ... }  # Predefined questions per topic
