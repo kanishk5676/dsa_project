@@ -580,7 +580,7 @@ def build_math_logic_graph_tree():
     lattices = TreeNode("Lattices as Posets, Hasse Diagram, Properties of Lattices")
     lattices.add_resource("Lattices and their Properties", "https://placeholder.com")
     lattices.add_questions("Lattices", [
-        "What are partially ordered relations?",
+        "What are partially ordered relations?"com,
         "Explain the Hasse diagram and its role in lattice theory."
     ])
     module4.add_child(lattices)
