@@ -135,10 +135,11 @@ def generate_n_questions(n):
         print(f"{i}. {question}")
 ```
 # Final Excecution
-<img width="722" alt="Screenshot 2024-11-22 at 10 18 16 AM" src="https://github.com/user-attachments/assets/e1b69b92-949c-4034-a8f2-38671035e323">
-<img width="1299" alt="Screenshot 2024-11-22 at 10 18 53 AM" src="https://github.com/user-attachments/assets/7c79e150-642e-419a-bfb5-6e79e5bb891e">
-<img width="722" alt="Screenshot 2024-11-22 at 10 18 16 AM" src="https://github.com/user-attachments/assets/e1b69b92-949c-4034-a8f2-38671035e323">
-<img width="682" alt="Screenshot 2024-11-22 at 10 19 46 AM" src=“https://github.com/user-attachments/assets/14ee5a5e-e4e3-4c9b-9e4c-e1a20ba42340">
-<img width="1338" alt="Screenshot 2024-11-22 at 10 20 15 AM" src="https://github.com/user-attachments/assets/0aaaf670-da18-4add-a827-3d76d6be3f00">
-<img width="451" alt="Screenshot 2024-11-22 at 10 21 41 AM" src="https://github.com/user-attachments/assets/2ea24aca-e5f4-4fc2-ad58-fa850b9eae35">
+
+<img width="722" alt="Screenshot 2024-11-22 at 10 18 16 AM" src="https://github.com/user-attachments/assets/8ca47411-63c9-457b-ad11-f1e0ae8ac176">
+<img width="451" alt="Screenshot 2024-11-22 at 10 21 41 AM" src="https://github.com/user-attachments/assets/5f5fcbf4-9d69-4600-8627-ae73cb4adbd5">
+<img width="1338" alt="Screenshot 2024-11-22 at 10 20 15 AM" src="https://github.com/user-attachments/assets/50652e1e-6896-4e50-91f0-7cb052ed9b23">
+<img width="682" alt="Screenshot 2024-11-22 at 10 19 46 AM" src="https://github.com/user-attachments/assets/ee33922f-6f6b-4c47-8ec3-db95e2446bbe">
+<img width="1272" alt="Screenshot 2024-11-22 at 10 19 22 AM" src="https://github.com/user-attachments/assets/d046847e-61f1-4446-8d48-76ca7ffa49dd">
+<img width="1299" alt="Screenshot 2024-11-22 at 10 18 53 AM" src="https://github.com/user-attachments/assets/67af9483-936b-4493-af6e-0d2d4e9543ef">
 
