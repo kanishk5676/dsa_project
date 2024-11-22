@@ -134,4 +134,4 @@ def generate_n_questions(n):
     for i, question in enumerate(random_questions, 1):
         print(f"{i}. {question}")
 ```
-https://www.google.com/imgres?q=images&imgurl=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2015%2F04%2F23%2F22%2F00%2Ftree-736885_1280.jpg&imgrefurl=https%3A%2F%2Fpixabay.com%2Fphotos%2Ftree-sunset-clouds-sky-silhouette-736885%2F&docid=J7zy-dl2IZQspM&tbnid=aVgXecnmQ_f1MM&vet=12ahUKEwicqOGhkO-JAxX1SWwGHVI-MngQM3oECBgQAA..i&w=1280&h=797&hcb=2&ved=2ahUKEwicqOGhkO-JAxX1SWwGHVI-MngQM3oECBgQAA
+<img width="1299" alt="Screenshot 2024-11-22 at 10 18 53 AM" src="https://github.com/user-attachments/assets/7c79e150-642e-419a-bfb5-6e79e5bb891e">
