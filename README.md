@@ -134,7 +134,7 @@ def generate_n_questions(n):
     for i, question in enumerate(random_questions, 1):
         print(f"{i}. {question}")
 ```
-#Final Excecution
+# Final Excecution
 <img width="722" alt="Screenshot 2024-11-22 at 10 18 16 AM" src="https://github.com/user-attachments/assets/e1b69b92-949c-4034-a8f2-38671035e323">
 <img width="1299" alt="Screenshot 2024-11-22 at 10 18 53 AM" src="https://github.com/user-attachments/assets/7c79e150-642e-419a-bfb5-6e79e5bb891e">
 <img width="722" alt="Screenshot 2024-11-22 at 10 18 16 AM" src="https://github.com/user-attachments/assets/e1b69b92-949c-4034-a8f2-38671035e323">
